@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RB-03</string>
+    <string name="urlMain">http://192.168.10.1/RB-01</string>
+    <string name="urlSlave">https://192.168.10.1/RB-01</string>
+</resources>
