@@ -2,6 +2,7 @@ package com.xiaprojects.rb
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.app.Presentation
 import android.content.Context
 import android.content.Intent
 import android.hardware.display.DisplayManager
@@ -10,15 +11,16 @@ import android.view.Display
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import android.view.WindowManager
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import com.xiaprojects.rb.MainActivity.BundleExtraParamsConst
 
 
 open class FullScreenWebViewActivity : AppCompatActivity() {
     protected lateinit var webView: WebView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,19 +105,11 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
 }
 
 class MainActivity : FullScreenWebViewActivity() {
-
-    object BundleExtraParamsConst {
-        const val APP_URL = "app_url"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         //
         super.onCreate(savedInstanceState)
-
-        val appUrl = intent.getStringExtra(BundleExtraParamsConst.APP_URL) ?: resources.getString(R.string.defaultUrl)
-
         //
-        webView.loadUrl(appUrl)
+        webView.loadUrl(resources.getString(R.string.urlMain))
 
         //
         val displayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
@@ -125,9 +119,7 @@ class MainActivity : FullScreenWebViewActivity() {
                 val options = ActivityOptions.makeBasic()
                 options.launchDisplayId = display.displayId
                 startActivity(
-                    Intent(this@MainActivity, SecondActivity::class.java).apply {
-                        putExtra(BundleExtraParamsConst.APP_URL, appUrl)
-                    },
+                    Intent(this@MainActivity, SecondActivity::class.java),
                     options.toBundle()
                 )
             }
@@ -140,10 +132,8 @@ class SecondActivity : FullScreenWebViewActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //
         super.onCreate(savedInstanceState)
-
-        val appUrl = intent.getStringExtra(BundleExtraParamsConst.APP_URL) ?: resources.getString(R.string.defaultUrl)
-
-        webView.loadUrl(appUrl)
+        //
+        webView.loadUrl(resources.getString(R.string.urlSlave))
     }
 }
 
