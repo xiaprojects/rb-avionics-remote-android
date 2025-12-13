@@ -156,6 +156,7 @@ class SplashScreenActivity : ComponentActivity() {
         loadingImage.clearAnimation()
         loadingImage.visibility = View.GONE
         errorText.visibility = View.VISIBLE
+        errorText.text = resources.getString(R.string.connection_error_info_text, urlEditText.text.toString())
         urlEditorLayout.visibility = View.VISIBLE
 
         retryButton.setOnClickListener {
