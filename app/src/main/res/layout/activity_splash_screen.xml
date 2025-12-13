@@ -29,10 +29,10 @@
             android:id="@+id/error_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Connection failed. Please check or update the API URL."
-            android:textColor="@android:color/holo_red_dark"
             android:layout_marginBottom="12dp"
-            android:textAlignment="center" />
+            android:text="@string/connection_error_info_text"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark" />
 
         <EditText
             android:id="@+id/url_edit_text"
@@ -54,7 +54,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Retry" />
+                android:text="@string/retry_button_label" />
 
             <Button
                 android:id="@+id/save_button"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="Save and retry" />
+                android:text="@string/save_and_retry_button_label" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

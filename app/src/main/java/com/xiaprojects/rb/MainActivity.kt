@@ -5,11 +5,13 @@ import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.hardware.display.DisplayManager
+import android.net.http.SslError
 import android.os.Bundle
 import android.view.Display
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import android.webkit.SslErrorHandler
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -76,7 +78,17 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
         webView.clearHistory()
         webView.clearFormData()
         */
-        webView.webViewClient = WebViewClient()
+        webView.webViewClient = object : WebViewClient() {
+
+            override fun onReceivedSslError(
+                view: WebView,
+                handler: SslErrorHandler,
+                error: SslError
+            ) {
+                // ignore all ssl errors
+                handler.proceed()
+            }
+        }
     }
 
     override fun onBackPressed() {

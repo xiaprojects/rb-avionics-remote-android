@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">RB-03</string>
     <string name="defaultUrl">https://192.168.10.1/RB-01</string>
+    <string name="apiRelUrl">/radio</string>
+    <string name="connection_error_info_text">Connection failed. Please check or update the API URL.</string>
+    <string name="retry_button_label">Retry</string>
+    <string name="save_and_retry_button_label">Save and retry</string>
 </resources>
