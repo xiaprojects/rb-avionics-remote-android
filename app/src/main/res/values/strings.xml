@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">RB-03</string>
-    <string name="urlMain">http://192.168.10.1/RB-01</string>
-    <string name="urlSlave">https://192.168.10.1/RB-01</string>
+    <string name="defaultUrl">https://192.168.10.1/RB-01</string>
+    <string name="apiRelUrl">/radio</string>
+    <string name="connection_error_info_text">Unable to establish WiFi connection to the RB-Avionics device. Checklist:\n
+1) Connect to RB-Avionics using WiFi by selecting RB-01\n
+2) Check for successful connection\n
+3) Confirm RB-Avionics web address: %1$s</string>
+    <string name="retry_button_label">Retry</string>
+    <string name="save_and_retry_button_label">Save and retry</string>
 </resources>
