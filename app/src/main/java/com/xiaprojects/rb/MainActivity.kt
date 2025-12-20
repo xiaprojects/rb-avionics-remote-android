@@ -69,8 +69,8 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
             setSupportZoom(true)
 
             // Optional: enable local file access if needed
-            allowFileAccess = true
-            allowContentAccess = true
+//            allowFileAccess = true
+//            allowContentAccess = true
         }
 
         /*
@@ -80,14 +80,14 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
         */
         webView.webViewClient = object : WebViewClient() {
 
-            override fun onReceivedSslError(
-                view: WebView,
-                handler: SslErrorHandler,
-                error: SslError
-            ) {
-                // ignore all ssl errors
-                handler.proceed()
-            }
+//            override fun onReceivedSslError(
+//                view: WebView,
+//                handler: SslErrorHandler,
+//                error: SslError
+//            ) {
+//                // ignore all ssl errors
+//                handler.proceed()
+//            }
         }
     }
 
