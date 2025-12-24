@@ -23,6 +23,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.net.URL
 import androidx.core.net.toUri
+import java.net.URI
 import java.security.cert.X509Certificate
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
@@ -160,15 +161,24 @@ class SplashScreenActivity : ComponentActivity() {
         urlEditorLayout.visibility = View.VISIBLE
 
         retryButton.setOnClickListener {
-            val currentUrl = urlEditText.text.toString()
+            val currentUrl = fixUrl(urlEditText.text.toString().trim())
             startConnectionCheck(currentUrl)
         }
 
         saveButton.setOnClickListener {
-            val newUrl = urlEditText.text.toString().trim()
+            val newUrl = fixUrl(urlEditText.text.toString().trim())
+            urlEditText.setText(newUrl)
             prefs.edit().putString(SettingsConst.APP_URL, newUrl).apply()
             startConnectionCheck(newUrl)
         }
+    }
+
+    private fun fixUrl(url: String): String {
+        val uri = url.toUri()
+        if (uri.path?.isEmpty() != true) {
+            return url
+        }
+        return uri.buildUpon().path(resources.getString(R.string.defaultUrlPath)).build().toString()
     }
 
     private fun goToMain(url: String) {

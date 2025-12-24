@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">RB-Avionics</string>
     <string name="defaultUrl">https://192.168.10.1/RB-01</string>
+    <string name="defaultUrlPath">/RB-01</string>
     <string name="apiRelUrl">/radio</string>
     <string name="connection_error_info_text">Unable to establish WiFi connection to the RB-Avionics device. Checklist:\n
 1) Connect to RB-Avionics using WiFi by selecting RB-01\n
