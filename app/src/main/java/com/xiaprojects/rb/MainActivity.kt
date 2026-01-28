@@ -2,6 +2,7 @@ package com.xiaprojects.rb
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.hardware.display.DisplayManager
@@ -17,10 +18,13 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.xiaprojects.rb.MainActivity.BundleExtraParamsConst
+import com.xiaprojects.rb.SplashScreenActivity.SettingsConst
 
 
 open class FullScreenWebViewActivity : AppCompatActivity() {
     protected lateinit var webView: WebView
+
+    private val prefs by lazy { getSharedPreferences("settings", Context.MODE_PRIVATE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,15 +84,54 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
         */
         webView.webViewClient = object : WebViewClient() {
 
-//            override fun onReceivedSslError(
-//                view: WebView,
-//                handler: SslErrorHandler,
-//                error: SslError
-//            ) {
-//                // ignore all ssl errors
-//                handler.proceed()
-//            }
+            override fun onReceivedSslError(
+                view: WebView,
+                handler: SslErrorHandler,
+                error: SslError
+            ) {
+                if (prefs.getString(SettingsConst.LAST_ACCEPTED_SSL_PROBLEM_USL, "") == view.url) {
+                    handler.proceed()
+                    return
+                }
+
+                showSslDialog(view.context) { userAccepted ->
+
+                    if (userAccepted) {
+                        handler.proceed()
+                        prefs.edit().putString(SettingsConst.LAST_ACCEPTED_SSL_PROBLEM_USL, view.url).apply()
+                    } else {
+                        handler.cancel()
+                        val intent = Intent(view.context, SplashScreenActivity::class.java).apply {
+                            putExtra(SplashScreenActivity.ExtraBundleConst.FORCE_URL_DIALOG, true)
+                        }
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+            }
         }
+    }
+
+    fun showSslDialog(context: Context, onDialogClosed: (Boolean) -> Unit) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(R.string.ssl_error_title)
+        builder.setMessage(R.string.ssl_error_message)
+
+        builder.setPositiveButton(R.string.ssl_error_continue) { _, _ ->
+            // Chiama la callback passando TRUE
+            onDialogClosed(true)
+        }
+
+        builder.setNegativeButton(R.string.ssl_error_cancel) { _, _ ->
+            // Chiama la callback passando FALSE
+            onDialogClosed(false)
+        }
+
+        builder.setOnCancelListener {
+            onDialogClosed(false)
+        }
+
+        builder.show()
     }
 
     override fun onBackPressed() {

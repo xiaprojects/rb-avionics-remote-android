@@ -9,4 +9,9 @@
 3) Confirm RB-Avionics web address: %1$s</string>
     <string name="retry_button_label">Retry</string>
     <string name="save_and_retry_button_label">Save and retry</string>
+
+    <string name="ssl_error_title">Security Warning</string>
+    <string name="ssl_error_message">The security certificate for this site is not trusted. Do you want to continue anyway?</string>
+    <string name="ssl_error_continue">Continue</string>
+    <string name="ssl_error_cancel">Cancel</string>
 </resources>

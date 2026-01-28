@@ -34,6 +34,11 @@ class SplashScreenActivity : ComponentActivity() {
 
     object SettingsConst {
         const val APP_URL = "app_url"
+        const val LAST_ACCEPTED_SSL_PROBLEM_USL = "last_accepted_ssl_error_url"
+    }
+
+    object ExtraBundleConst {
+        const val FORCE_URL_DIALOG = "force_url_dialog"
     }
 
     private lateinit var loadingImage: ImageView
@@ -94,6 +99,10 @@ class SplashScreenActivity : ComponentActivity() {
         urlEditorLayout.visibility = View.GONE
 
         lifecycleScope.launch {
+            if (intent.getBooleanExtra(ExtraBundleConst.FORCE_URL_DIALOG, false)) {
+                showUrlEditor()
+                return@launch;
+            }
             val connected = checkServerConnection(url)
             if (connected) {
                 delay(500)
