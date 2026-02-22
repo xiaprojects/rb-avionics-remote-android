@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connection_error_info_text">Es konnte keine WLAN-Verbindung zum RB-Avionics-Gerät hergestellt werden. Checkliste:\n
+1) Verbinden Sie sich über WLAN mit RB-Avionics, indem Sie RB-01 auswählen\n
+2) Überprüfen Sie auf erfolgreiche Verbindung\n
+3) Bestätigen Sie die RB-Avionics-Webadresse: %1$s</string>
+    <string name="retry_button_label">Wiederholen</string>
+    <string name="save_and_retry_button_label">Speichern und wiederholen</string>
+
+    <string name="ssl_error_title">Sicherheitswarnung</string>
+    <string name="ssl_error_message">Das Sicherheitszertifikat für diese Website ist nicht vertrauenswürdig. Möchten Sie trotzdem fortfahren?</string>
+    <string name="ssl_error_continue">Fortfahren</string>
+    <string name="ssl_error_cancel">Abbrechen</string>
+
+    <string name="title_activity_settings">Einstellungen</string>
+
+    <!-- Preference Titles -->
+    <string name="browser_header">Browser</string>
+    <string name="setting_screen_header">Einstellungsbildschirm</string>
+
+    <!-- Browser Preferences -->
+    <string name="site_url_title">Website-URL</string>
+    <string name="back_button_title">Verhalten der Zurück-Taste</string>
+    <string name="api_timeout_title">API-Timeout (Sekunden)</string>
+
+    <!-- Settings Preferences -->
+    <string name="settings_timeout">Timeout in Sekunden für die Einstellungen-Schaltfläche</string>
+    <string name="settings_timeout_warning_title">Warnung</string>
+    <string name="settings_timeout_warning_text">Wenn der Timeout-Wert zu niedrig ist, können Sie die Schaltfläche möglicherweise nicht rechtzeitig drücken. In diesem Fall müssen Sie die App-Einstellungen in den Android-Systemeinstellungen löschen. Sind Sie sicher?</string>
+</resources>

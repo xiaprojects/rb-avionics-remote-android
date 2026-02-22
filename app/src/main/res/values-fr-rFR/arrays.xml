@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="back_button_entries">
+        <item>Autoriser l\'historique précédent et la sortie de l\'application</item>
+        <item>Autoriser uniquement l\'historique précédent</item>
+        <item>Autoriser uniquement la sortie de l\'application</item>
+        <item>Ne rien faire</item>
+    </string-array>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="back_button_entries">
+        <item>Consenti cronologia indietro e uscita app</item>
+        <item>Consenti solo cronologia indietro</item>
+        <item>Consenti solo uscita app</item>
+        <item>Non fare nulla</item>
+    </string-array>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="back_button_entries">
+        <item>Historie zurück und App-Beenden erlauben</item>
+        <item>Nur Historie zurück erlauben</item>
+        <item>Nur App-Beenden erlauben</item>
+        <item>Nichts tun</item>
+    </string-array>
+</resources>

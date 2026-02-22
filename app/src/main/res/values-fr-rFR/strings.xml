@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connection_error_info_text">Impossible d\'établir une connexion WiFi avec l\'appareil RB-Avionics. Liste de vérification :\n
+1) Connectez-vous à RB-Avionics via WiFi en sélectionnant RB-01\n
+2) Vérifiez que la connexion a réussi\n
+3) Confirmez l\'adresse web de RB-Avionics : %1$s</string>
+    <string name="retry_button_label">Réessayer</string>
+    <string name="save_and_retry_button_label">Enregistrer et réessayer</string>
+
+    <string name="ssl_error_title">Avertissement de sécurité</string>
+    <string name="ssl_error_message">Le certificat de sécurité de ce site n\'est pas approuvé. Voulez-vous continuer quand même ?</string>
+    <string name="ssl_error_continue">Continuer</string>
+    <string name="ssl_error_cancel">Annuler</string>
+
+    <string name="title_activity_settings">Paramètres</string>
+
+    <!-- Preference Titles -->
+    <string name="browser_header">Navigateur</string>
+    <string name="setting_screen_header">Écran des paramètres</string>
+
+    <!-- Browser Preferences -->
+    <string name="site_url_title">URL du site</string>
+    <string name="back_button_title">Comportement du bouton Retour</string>
+    <string name="api_timeout_title">Délai d\'attente de l\'API (secondes)</string>
+
+    <!-- Settings Preferences -->
+    <string name="settings_timeout">Délai d\'attente en secondes pour le bouton de paramètres</string>
+    <string name="settings_timeout_warning_title">Avertissement</string>
+    <string name="settings_timeout_warning_text">Si la valeur du délai d\'attente est trop faible, vous ne pourrez peut-être pas appuyer sur le bouton à temps. Dans ce cas, vous devrez effacer les paramètres de l\'application depuis les paramètres système Android. Êtes-vous sûr ?</string>
+</resources>

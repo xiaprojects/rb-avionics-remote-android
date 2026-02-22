@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connection_error_info_text">Impossibile stabilire una connessione WiFi con il dispositivo RB-Avionics. Controlli:\n
+1) Connettiti a RB-Avionics tramite WiFi selezionando RB-01\n
+2) Verifica che la connessione sia riuscita\n
+3) Conferma l\'indirizzo web di RB-Avionics: %1$s</string>
+    <string name="retry_button_label">Riprova</string>
+    <string name="save_and_retry_button_label">Salva e riprova</string>
+
+    <string name="ssl_error_title">Avviso di sicurezza</string>
+    <string name="ssl_error_message">Il certificato di sicurezza per questo sito non è attendibile. Vuoi continuare comunque?</string>
+    <string name="ssl_error_continue">Continua</string>
+    <string name="ssl_error_cancel">Annulla</string>
+
+    <string name="title_activity_settings">Impostazioni</string>
+
+    <!-- Preference Titles -->
+    <string name="browser_header">Browser</string>
+    <string name="setting_screen_header">Schermata impostazioni</string>
+
+    <!-- Browser Preferences -->
+    <string name="site_url_title">URL del sito</string>
+    <string name="back_button_title">Comportamento tasto indietro</string>
+    <string name="api_timeout_title">Timeout API (secondi)</string>
+
+    <!-- Settings Preferences -->
+    <string name="settings_timeout">Timeout in secondi per il tasto impostazioni</string>
+    <string name="settings_timeout_warning_title">Attenzione</string>
+    <string name="settings_timeout_warning_text">Se il valore di timeout è troppo basso, potresti non riuscire a premere il pulsante in tempo. In questo caso, dovrai cancellare le impostazioni dell\'app dalle impostazioni di sistema Android. Sei sicuro?</string>
+</resources>
