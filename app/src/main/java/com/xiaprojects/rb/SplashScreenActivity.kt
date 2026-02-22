@@ -29,6 +29,7 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 import androidx.preference.PreferenceManager
+import org.json.JSONArray
 
 
 class SplashScreenActivity : ComponentActivity() {
@@ -176,7 +177,20 @@ class SplashScreenActivity : ComponentActivity() {
 
             val request = Request.Builder().url(uri.toString()).build()
             val response = client.newCall(request).execute()
-            response.code == 200
+            
+            if (response.code == 200) {
+                val bodyString = response.body?.string() ?: return@withContext false
+                val jsonArray = JSONArray(bodyString)
+                
+                if (jsonArray.length() == 0) return@withContext false
+                
+                val firstItem = jsonArray.getJSONObject(0)
+                firstItem.has("Name") && 
+                        firstItem.has("FrequencyActive") && 
+                        firstItem.has("FrequencyStandby")
+            } else {
+                false
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             false
