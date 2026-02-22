@@ -11,8 +11,8 @@ android {
         applicationId = "com.xiaprojects.rb"
         minSdk = 24
         targetSdk = 36
-        versionCode = 6
-        versionName = "1.2.0"
+        versionCode = 7
+        versionName = "1.3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
