@@ -18,6 +18,14 @@
             app:title="@string/back_button_title"
             app:useSimpleSummaryProvider="true" />
 
+        <SeekBarPreference
+            app:key="apiTimeout"
+            app:defaultValue="30"
+            app:min="0"
+            android:max="60"
+            android:title="@string/api_timeout_title"
+            app:showSeekBarValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/setting_screen_header">

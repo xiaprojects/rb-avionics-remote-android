@@ -43,6 +43,7 @@ class SplashScreenActivity : ComponentActivity() {
         const val MODE_NOTHING = "nothing"
         const val SETTINGS_BUTTON_TIMEOUT = "settingsTimeout"
         const val LAST_ACCEPTED_SSL_PROBLEM_USL = "last_accepted_ssl_error_url"
+        const val API_TIMEOUT = "apiTimeout"
     }
 
     object ExtraBundleConst {
@@ -135,7 +136,7 @@ class SplashScreenActivity : ComponentActivity() {
         }
     }
 
-    private fun getUnsafeOkHttpClient(): OkHttpClient {
+    private fun getUnsafeOkHttpClient(timeoutSeconds: Long = 5L): OkHttpClient {
         val trustAllCerts = arrayOf<TrustManager>(
             object : X509TrustManager {
                 override fun checkClientTrusted(
@@ -162,8 +163,8 @@ class SplashScreenActivity : ComponentActivity() {
                 sslSocketFactory,
                 trustAllCerts[0] as X509TrustManager
             )
-            .connectTimeout(5, java.util.concurrent.TimeUnit.SECONDS)
-            .readTimeout(5, java.util.concurrent.TimeUnit.SECONDS)
+            .connectTimeout(timeoutSeconds, java.util.concurrent.TimeUnit.SECONDS)
+            .readTimeout(timeoutSeconds, java.util.concurrent.TimeUnit.SECONDS)
             .hostnameVerifier { _, _ -> true }
             .build()
     }
@@ -173,7 +174,14 @@ class SplashScreenActivity : ComponentActivity() {
             val uri = url.toUri().buildUpon()
                 .path(resources.getString(R.string.apiRelUrl))
                 .build()
-            val client = getUnsafeOkHttpClient()
+            
+            val timeoutSeconds = try {
+                prefs.getString(SettingsConst.API_TIMEOUT, "30")?.toLong() ?: 30L
+            } catch (e: Exception) {
+                30L
+            }
+            
+            val client = getUnsafeOkHttpClient(timeoutSeconds)
 
             val request = Request.Builder().url(uri.toString()).build()
             val response = client.newCall(request).execute()

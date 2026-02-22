@@ -24,6 +24,7 @@
     <!-- Browser Preferences -->
     <string name="site_url_title">Site url</string>
     <string name="back_button_title">Back button behaviour</string>
+    <string name="api_timeout_title">API timeout (seconds)</string>
 
     <!-- Settings Preferences -->
     <string name="settings_timeout">Timeout in seconds for settings button</string>
