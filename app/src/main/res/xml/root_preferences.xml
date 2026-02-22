@@ -1,0 +1,36 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/browser_header">
+
+        <EditTextPreference
+            app:key="siteUrl"
+            android:inputType="textUri"
+            app:title="@string/site_url_title"
+            app:defaultValue="@string/defaultUrl"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="history_and_exit"
+            app:entries="@array/back_button_entries"
+            app:entryValues="@array/back_button_values"
+            app:key="backButton"
+            app:title="@string/back_button_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/setting_screen_header">
+
+        <SeekBarPreference
+            app:key="settingsTimeout"
+            app:defaultValue="5"
+            app:min="0"
+            android:max="10"
+            android:title="@string/settings_timeout"
+            app:showSeekBarValue="true"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -14,4 +14,19 @@
     <string name="ssl_error_message">The security certificate for this site is not trusted. Do you want to continue anyway?</string>
     <string name="ssl_error_continue">Continue</string>
     <string name="ssl_error_cancel">Cancel</string>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="browser_header">Browser</string>
+    <string name="setting_screen_header">Settings screen</string>
+
+    <!-- Browser Preferences -->
+    <string name="site_url_title">Site url</string>
+    <string name="back_button_title">Back button behaviour</string>
+
+    <!-- Settings Preferences -->
+    <string name="settings_timeout">Timeout in seconds for settings button</string>
+    <string name="settings_timeout_warning_title">Warning</string>
+    <string name="settings_timeout_warning_text">If the timeout value is too low, you may not be able to press the button in time. In this case, you need to clear the app settings from your Android system settings. Are you sure?</string>
 </resources>

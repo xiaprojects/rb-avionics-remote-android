@@ -28,17 +28,25 @@ import java.security.cert.X509Certificate
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
+import androidx.preference.PreferenceManager
 
 
 class SplashScreenActivity : ComponentActivity() {
 
     object SettingsConst {
-        const val APP_URL = "app_url"
+        const val APP_URL = "siteUrl"
+        const val BACK_BUTTON_MODE = "backButton"
+        const val MODE_HISTORY_AND_EXIT = "history_and_exit"
+        const val MODE_HISTORY = "history_only"
+        const val MODE_EXIT = "exit_only"
+        const val MODE_NOTHING = "nothing"
+        const val SETTINGS_BUTTON_TIMEOUT = "settingsTimeout"
         const val LAST_ACCEPTED_SSL_PROBLEM_USL = "last_accepted_ssl_error_url"
     }
 
     object ExtraBundleConst {
         const val FORCE_URL_DIALOG = "force_url_dialog"
+        const val OPEN_SETTINGS = "openSettings"
     }
 
     private lateinit var loadingImage: ImageView
@@ -51,7 +59,7 @@ class SplashScreenActivity : ComponentActivity() {
 
     private lateinit var splashscreen: SplashScreen
 
-    private val prefs by lazy { getSharedPreferences("settings", Context.MODE_PRIVATE) }
+    private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //val splashScreen = SplashScreen.
@@ -82,13 +90,26 @@ class SplashScreenActivity : ComponentActivity() {
         // Load animation
         rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate)
 
-        startConnectionCheck(savedUrl)
-
         splashscreen.apply {
             setKeepOnScreenCondition {
                 // Keeps the splash screen visible while loading (optional logic can be applied here)
                 false
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val openSett = intent.getBooleanExtra(ExtraBundleConst.OPEN_SETTINGS, false)
+
+        val savedUrl = prefs.getString(SettingsConst.APP_URL, "")!!
+
+        if (savedUrl == "" || openSett) {
+            intent.removeExtra(ExtraBundleConst.OPEN_SETTINGS)
+            startActivity(Intent(this, SettingsActivity::class.java))
+        } else {
+            startConnectionCheck(savedUrl)
         }
     }
 

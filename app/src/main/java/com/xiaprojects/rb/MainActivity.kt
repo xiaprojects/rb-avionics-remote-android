@@ -16,7 +16,12 @@ import android.webkit.SslErrorHandler
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ImageButton
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import com.xiaprojects.rb.MainActivity.BundleExtraParamsConst
 import com.xiaprojects.rb.SplashScreenActivity.SettingsConst
 
@@ -24,7 +29,7 @@ import com.xiaprojects.rb.SplashScreenActivity.SettingsConst
 open class FullScreenWebViewActivity : AppCompatActivity() {
     protected lateinit var webView: WebView
 
-    private val prefs by lazy { getSharedPreferences("settings", Context.MODE_PRIVATE) }
+    private val prefs by lazy { PreferenceManager.getDefaultSharedPreferences(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,6 +115,10 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
                 }
             }
         }
+
+        onBackPressedDispatcher.addCallback(this) {
+            backPressed()
+        }
     }
 
     fun showSslDialog(context: Context, onDialogClosed: (Boolean) -> Unit) {
@@ -134,11 +143,25 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
         builder.show()
     }
 
-    override fun onBackPressed() {
-        if (this::webView.isInitialized && webView.canGoBack()) {
-            webView.goBack()
-        } else {
-            super.onBackPressed()
+    fun backPressed() {
+        val mode = prefs.getString(SettingsConst.BACK_BUTTON_MODE, SettingsConst.MODE_HISTORY_AND_EXIT)
+        if (mode == SettingsConst.MODE_NOTHING) {
+            return
+        }
+        else if (mode == SettingsConst.MODE_EXIT) {
+            finish()
+        }
+        else if (mode == SettingsConst.MODE_HISTORY) {
+            if (this::webView.isInitialized && webView.canGoBack()) {
+                webView.goBack()
+            }
+        }
+        else {
+            if (this::webView.isInitialized && webView.canGoBack()) {
+                webView.goBack()
+            } else {
+                super.onBackPressed()
+            }
         }
     }
 
@@ -159,6 +182,9 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
 
 class MainActivity : FullScreenWebViewActivity() {
 
+    private val mainPrefs by lazy { PreferenceManager.getDefaultSharedPreferences(this) }
+    private lateinit var buttonSettings: ImageButton
+
     object BundleExtraParamsConst {
         const val APP_URL = "app_url"
     }
@@ -166,6 +192,28 @@ class MainActivity : FullScreenWebViewActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //
         super.onCreate(savedInstanceState)
+
+        val timeout = mainPrefs.getInt(SettingsConst.SETTINGS_BUTTON_TIMEOUT, 5)
+
+        buttonSettings = findViewById<ImageButton>(R.id.buttonSettings)
+        buttonSettings.apply {
+            alpha = 1f
+            visibility = View.VISIBLE
+
+            animate()
+                .alpha(0f)
+                .setDuration(timeout * 1000L)
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        buttonSettings.visibility = View.GONE
+                    }
+                })
+        }
+        buttonSettings.setOnClickListener {
+            startActivity(Intent(this, SplashScreenActivity::class.java).putExtra(
+                SplashScreenActivity.ExtraBundleConst.OPEN_SETTINGS, true))
+            finish()
+        }
 
         val appUrl = intent.getStringExtra(BundleExtraParamsConst.APP_URL) ?: resources.getString(R.string.defaultUrl)
 
