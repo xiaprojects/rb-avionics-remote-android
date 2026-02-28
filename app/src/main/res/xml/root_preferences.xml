@@ -20,7 +20,7 @@
 
         <SeekBarPreference
             app:key="apiTimeout"
-            app:defaultValue="30"
+            app:defaultValue="10"
             app:min="0"
             android:max="60"
             android:title="@string/api_timeout_title"
