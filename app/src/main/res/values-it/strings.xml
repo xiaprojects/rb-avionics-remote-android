@@ -28,4 +28,8 @@
     <string name="settings_timeout">Timeout in secondi per il tasto impostazioni</string>
     <string name="settings_timeout_warning_title">Attenzione</string>
     <string name="settings_timeout_warning_text">Se il valore di timeout è troppo basso, potresti non riuscire a premere il pulsante in tempo. In questo caso, dovrai cancellare le impostazioni dell\'app dalle impostazioni di sistema Android. Sei sicuro?</string>
+
+    <!-- Info Preferences -->
+    <string name="info_header">Informazioni</string>
+    <string name="version_title">Versione app</string>
 </resources>

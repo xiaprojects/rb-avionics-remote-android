@@ -55,4 +55,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/info_header">
+
+        <Preference
+            app:key="version"
+            app:title="@string/version_title"
+            app:iconSpaceReserved="false"
+            app:selectable="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

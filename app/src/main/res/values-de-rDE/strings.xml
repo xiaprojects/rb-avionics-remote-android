@@ -28,4 +28,8 @@
     <string name="settings_timeout">Timeout in Sekunden für die Einstellungen-Schaltfläche</string>
     <string name="settings_timeout_warning_title">Warnung</string>
     <string name="settings_timeout_warning_text">Wenn der Timeout-Wert zu niedrig ist, können Sie die Schaltfläche möglicherweise nicht rechtzeitig drücken. In diesem Fall müssen Sie die App-Einstellungen in den Android-Systemeinstellungen löschen. Sind Sie sicher?</string>
+
+    <!-- Info Preferences -->
+    <string name="info_header">Informationen</string>
+    <string name="version_title">App-Version</string>
 </resources>

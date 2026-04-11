@@ -58,6 +58,15 @@ class SettingsActivity : AppCompatActivity() {
                         .setNegativeButton(android.R.string.cancel, null).show()
                     false
                 }
+
+            // Set app version
+            try {
+                val context = requireContext()
+                val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+                findPreference<Preference>("version")?.summary = packageInfo.versionName
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 }

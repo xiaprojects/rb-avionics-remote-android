@@ -28,4 +28,8 @@
     <string name="settings_timeout">Délai d\'attente en secondes pour le bouton de paramètres</string>
     <string name="settings_timeout_warning_title">Avertissement</string>
     <string name="settings_timeout_warning_text">Si la valeur du délai d\'attente est trop faible, vous ne pourrez peut-être pas appuyer sur le bouton à temps. Dans ce cas, vous devrez effacer les paramètres de l\'application depuis les paramètres système Android. Êtes-vous sûr ?</string>
+
+    <!-- Info Preferences -->
+    <string name="info_header">Informations</string>
+    <string name="version_title">Version de l\'application</string>
 </resources>

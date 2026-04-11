@@ -31,4 +31,8 @@
     <string name="settings_timeout">Timeout in seconds for settings button</string>
     <string name="settings_timeout_warning_title">Warning</string>
     <string name="settings_timeout_warning_text">If the timeout value is too low, you may not be able to press the button in time. In this case, you need to clear the app settings from your Android system settings. Are you sure?</string>
+
+    <!-- Info Preferences -->
+    <string name="info_header">Information</string>
+    <string name="version_title">App Version</string>
 </resources>
