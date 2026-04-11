@@ -1,13 +1,16 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="@string/browser_header">
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/browser_header">
 
         <EditTextPreference
             app:key="siteUrl"
             android:inputType="textUri"
             app:title="@string/site_url_title"
             app:defaultValue="@string/defaultUrl"
+            app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
@@ -16,6 +19,7 @@
             app:entryValues="@array/back_button_values"
             app:key="backButton"
             app:title="@string/back_button_title"
+            app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
 
         <SeekBarPreference
@@ -24,16 +28,20 @@
             app:min="0"
             android:max="60"
             android:title="@string/api_timeout_title"
+            app:iconSpaceReserved="false"
             app:showSeekBarValue="true" />
 
         <SwitchPreferenceCompat
             app:key="keepScreenOn"
             app:title="@string/keep_screen_on_title"
+            app:iconSpaceReserved="false"
             app:defaultValue="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/setting_screen_header">
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/setting_screen_header">
 
         <SeekBarPreference
             app:key="settingsTimeout"
@@ -41,6 +49,7 @@
             app:min="0"
             android:max="10"
             android:title="@string/settings_timeout"
+            app:iconSpaceReserved="false"
             app:showSeekBarValue="true"
             />
 
