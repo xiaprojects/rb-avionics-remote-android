@@ -22,6 +22,7 @@
     <string name="site_url_title">URL del sito</string>
     <string name="back_button_title">Comportamento tasto indietro</string>
     <string name="api_timeout_title">Timeout API (secondi)</string>
+    <string name="keep_screen_on_title">Mantieni lo schermo sempre acceso</string>
 
     <!-- Settings Preferences -->
     <string name="settings_timeout">Timeout in secondi per il tasto impostazioni</string>

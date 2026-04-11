@@ -37,6 +37,13 @@ open class FullScreenWebViewActivity : AppCompatActivity() {
         // Hide ActionBar
         supportActionBar?.hide()
 
+        // Mantieni lo schermo sempre acceso
+        if (prefs.getBoolean(SettingsConst.KEEP_SCREEN_ON, true)) {
+            window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        } else {
+            window.clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
             window.setDecorFitsSystemWindows(false)
             window.insetsController?.let { controller ->

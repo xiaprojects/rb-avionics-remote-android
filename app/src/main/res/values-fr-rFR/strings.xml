@@ -22,6 +22,7 @@
     <string name="site_url_title">URL du site</string>
     <string name="back_button_title">Comportement du bouton Retour</string>
     <string name="api_timeout_title">Délai d\'attente de l\'API (secondes)</string>
+    <string name="keep_screen_on_title">Garder l\'écran toujours allumé</string>
 
     <!-- Settings Preferences -->
     <string name="settings_timeout">Délai d\'attente en secondes pour le bouton de paramètres</string>

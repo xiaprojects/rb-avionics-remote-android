@@ -26,6 +26,11 @@
             android:title="@string/api_timeout_title"
             app:showSeekBarValue="true" />
 
+        <SwitchPreferenceCompat
+            app:key="keepScreenOn"
+            app:title="@string/keep_screen_on_title"
+            app:defaultValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/setting_screen_header">

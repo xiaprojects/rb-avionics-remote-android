@@ -44,6 +44,7 @@ class SplashScreenActivity : ComponentActivity() {
         const val SETTINGS_BUTTON_TIMEOUT = "settingsTimeout"
         const val LAST_ACCEPTED_SSL_PROBLEM_USL = "last_accepted_ssl_error_url"
         const val API_TIMEOUT = "apiTimeout"
+        const val KEEP_SCREEN_ON = "keepScreenOn"
     }
 
     object ExtraBundleConst {

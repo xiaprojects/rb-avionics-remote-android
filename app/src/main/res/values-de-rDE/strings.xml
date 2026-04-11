@@ -22,6 +22,7 @@
     <string name="site_url_title">Website-URL</string>
     <string name="back_button_title">Verhalten der Zurück-Taste</string>
     <string name="api_timeout_title">API-Timeout (Sekunden)</string>
+    <string name="keep_screen_on_title">Bildschirm immer eingeschaltet lassen</string>
 
     <!-- Settings Preferences -->
     <string name="settings_timeout">Timeout in Sekunden für die Einstellungen-Schaltfläche</string>
